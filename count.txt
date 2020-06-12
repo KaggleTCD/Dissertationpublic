@@ -1,0 +1,338 @@
+
+
+ABC.tml
+BEFORE
+Iconicity not followed
+Iconicity followed
+Iconicity not followed
+Iconicity not followed
+Iconicity followed
+Iconicity followed
+Followed
+0.5
+Not Followed
+0.5
+
+ABC.tml
+AFTER
+Iconicity followed
+Iconicity followed
+Followed
+1.0
+Not Followed
+0.0
+
+ABC1.tml
+BEFORE
+Iconicity not followed
+Followed
+0.0
+Not Followed
+1.0
+
+ABC1.tml
+AFTER
+Iconicity followed
+Iconicity not followed
+Iconicity followed
+Iconicity followed
+Iconicity followed
+Iconicity followed
+Iconicity followed
+Iconicity followed
+Iconicity followed
+Followed
+0.8888888888888888
+Not Followed
+0.1111111111111111
+
+ABC2.tml
+BEFORE
+Iconicity followed
+Iconicity not followed
+Iconicity not followed
+Iconicity not followed
+Iconicity followed
+Iconicity not followed
+Iconicity not followed
+Iconicity not followed
+Followed
+0.25
+Not Followed
+0.75
+
+ABC2.tml
+AFTER
+Iconicity followed
+Iconicity followed
+Iconicity followed
+Iconicity followed
+Iconicity followed
+Iconicity followed
+Iconicity followed
+Iconicity followed
+Followed
+1.0
+Not Followed
+0.0
+
+ABC3.tml
+BEFORE
+Iconicity not followed
+Followed
+0.0
+Not Followed
+1.0
+
+ABC3.tml
+AFTER
+Iconicity not followed
+Iconicity followed
+Iconicity followed
+Followed
+0.6666666666666666
+Not Followed
+0.3333333333333333
+
+AP.tml
+BEFORE
+Iconicity followed
+Iconicity not followed
+Iconicity not followed
+Iconicity followed
+Iconicity not followed
+Iconicity not followed
+Iconicity not followed
+Iconicity not followed
+Iconicity followed
+Iconicity followed
+Iconicity followed
+Iconicity followed
+Iconicity followed
+Followed
+0.5384615384615384
+Not Followed
+0.46153846153846156
+
+AP.tml
+AFTER
+Iconicity followed
+Iconicity followed
+Iconicity not followed
+Iconicity not followed
+Iconicity not followed
+Iconicity not followed
+Iconicity not followed
+Iconicity not followed
+Iconicity followed
+Iconicity followed
+Iconicity followed
+Iconicity not followed
+Followed
+0.4166666666666667
+Not Followed
+0.5833333333333334
+
+AP1.tml
+BEFORE
+Iconicity followed
+Iconicity followed
+Iconicity followed
+Iconicity not followed
+Iconicity not followed
+Iconicity not followed
+Followed
+0.5
+Not Followed
+0.5
+
+AP1.tml
+AFTER
+Iconicity followed
+Iconicity followed
+Iconicity followed
+Iconicity followed
+Iconicity followed
+Iconicity followed
+Iconicity not followed
+Iconicity followed
+Iconicity not followed
+Iconicity not followed
+Iconicity not followed
+Iconicity followed
+Iconicity not followed
+Followed
+0.6153846153846154
+Not Followed
+0.38461538461538464
+
+APW.tml
+BEFORE
+Iconicity not followed
+Iconicity not followed
+Iconicity not followed
+Iconicity followed
+Iconicity followed
+Iconicity not followed
+Iconicity not followed
+Iconicity not followed
+Iconicity followed
+Followed
+0.3333333333333333
+Not Followed
+0.6666666666666666
+
+APW.tml
+AFTER
+Iconicity followed
+Iconicity not followed
+Iconicity not followed
+Followed
+0.3333333333333333
+Not Followed
+0.6666666666666666
+
+APW1.tml
+AFTER
+Iconicity not followed
+Iconicity not followed
+Followed
+0.0
+Not Followed
+1.0
+
+APW2.tml
+BEFORE
+Iconicity not followed
+Iconicity followed
+Iconicity followed
+Iconicity followed
+Iconicity followed
+Followed
+0.8
+Not Followed
+0.2
+
+APW2.tml
+AFTER
+Iconicity followed
+Iconicity not followed
+Iconicity followed
+Iconicity not followed
+Iconicity followed
+Iconicity followed
+Iconicity followed
+Followed
+0.7142857142857143
+Not Followed
+0.2857142857142857
+
+APW3.tml
+BEFORE
+Iconicity followed
+Iconicity not followed
+Iconicity not followed
+Iconicity not followed
+Followed
+0.25
+Not Followed
+0.75
+
+APW3.tml
+AFTER
+Iconicity not followed
+Iconicity not followed
+Iconicity not followed
+Iconicity not followed
+Iconicity not followed
+Iconicity not followed
+Followed
+0.0
+Not Followed
+1.0
+
+NYT.tml
+BEFORE
+Iconicity followed
+Followed
+1.0
+Not Followed
+0.0
+
+NYT.tml
+AFTER
+Iconicity not followed
+Iconicity followed
+Iconicity followed
+Iconicity followed
+Followed
+0.75
+Not Followed
+0.25
+
+wsj.tml
+BEFORE
+Iconicity not followed
+Iconicity followed
+Iconicity followed
+Iconicity followed
+Iconicity not followed
+Iconicity not followed
+Iconicity not followed
+Iconicity not followed
+Iconicity not followed
+Iconicity not followed
+Iconicity not followed
+Followed
+0.2727272727272727
+Not Followed
+0.7272727272727273
+
+wsj.tml
+AFTER
+Iconicity not followed
+Iconicity not followed
+Iconicity not followed
+Iconicity followed
+Iconicity not followed
+Followed
+0.2
+Not Followed
+0.8
+
+wsj1.tml
+BEFORE
+Iconicity followed
+Followed
+1.0
+Not Followed
+0.0
+
+wsj1.tml
+AFTER
+Iconicity not followed
+Iconicity not followed
+Iconicity not followed
+Followed
+0.0
+Not Followed
+1.0
+
+APW4.tml
+BEFORE
+Iconicity followed
+Followed
+1.0
+Not Followed
+0.0
+
+APW4.tml
+AFTER
+Iconicity followed
+Iconicity not followed
+Iconicity not followed
+Iconicity not followed
+Followed
+0.25
+Not Followed
+0.75
