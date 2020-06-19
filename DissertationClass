@@ -1,0 +1,335 @@
+import nltk
+nltk.download('punkt')
+from nltk.tokenize import word_tokenize
+import xml.etree.ElementTree as ET
+from textblob import TextBlob
+tokens = []
+class Iconicity:
+    def checkIconicity(self,filename,temporalElement):
+        print("Hello checkIconicity ",filename)
+        f = open("count.txt", "a")
+        
+        with open (filename) as fin:
+          tokens = word_tokenize(fin.read())
+          #print(tokens)
+          print("---------AFTER tag-----------")
+          print(tokens.count("AFTER"))
+          print("---------BEFORE tag-----------")
+          print(tokens.count("BEFORE"))
+        mytree = ET.parse(filename)
+        myroot = mytree.getroot()
+        dictforTlink = {}
+        for tags in range(len(myroot)):
+            if myroot[tags].tag == 'TLINK':
+                if myroot[tags].attrib['relType']==temporalElement:
+                    print(myroot[tags].attrib)
+                    dictforTlink[myroot[tags].attrib['eventInstanceID'] if 'eventInstanceID' in myroot[tags].attrib.keys() else myroot[tags].attrib['timeID']] = myroot[tags].attrib['relatedToTime'] if 'relatedToTime' in myroot[tags].attrib.keys() else myroot[tags].attrib['relatedToEventInstance']
+        dictforTlink
+        dictformakeinstance = {}
+        for tags in range(len(myroot)):
+            if myroot[tags].tag == 'MAKEINSTANCE':
+                dictformakeinstance[myroot[tags].attrib['eiid']] = myroot[tags].attrib['eventID']
+        dictformakeinstance
+        dictresolved = {}
+        for x in dictforTlink.keys():
+            value = dictforTlink[x]
+            dictresolved[x if 't' in x else dictformakeinstance[x]] = value if 't' in value else dictformakeinstance[value]
+            
+        dictresolved
+        f.write("\n")
+        f.write("\n")
+        f.write(filename)
+        f.write("\n")
+        f.write(temporalElement)
+        f.write("\n")
+        followed = 0
+        notfollowed = 0
+        for events in dictresolved.keys():
+            value = dictresolved[events]
+            if tokens.index(events) < tokens.index(value):
+                print("Iconicity followed for ",events," and ",value)
+                if("t" not in events and "t" not in value):
+                    f.write("Iconicity followed")
+                    followed = followed+1
+                    f.write("\n")
+                
+                #print(events," has position",tokens.index(events)," and ",value," has position ",tokens.index(value))
+            else:
+                 print("Iconicity not followed for ",events," and ",value)
+                 #print(events," has position",tokens.index(events)," and ",value," has position ",tokens.index(value))
+                 if("t" not in events and "t" not in value):
+                     f.write("Iconicity not followed")
+                     notfollowed = notfollowed+1
+                     f.write("\n")
+                 
+        f.write("Followed\n")
+        f.write(str(followed/(followed+notfollowed)))
+        f.write("\n")
+        f.write("Not Followed\n")
+        f.write(str(notfollowed/(followed+notfollowed)))
+        f.close();
+        print("checkIconicity finished")
+    def checkIconicityAfter(self,filename,temporalElement):
+          print("Hello checkIconicityAfter ",filename)
+          f = open("count.txt", "a")
+        
+          with open (filename) as fin:
+            tokens = word_tokenize(fin.read())
+            #print(tokens)
+            print("---------AFTER tag-----------")
+            print(tokens.count("AFTER"))
+            print("---------BEFORE tag-----------")
+            print(tokens.count("BEFORE"))
+          mytree = ET.parse(filename)
+          myroot = mytree.getroot()
+          dictforTlink = {}
+          for tags in range(len(myroot)):
+              if myroot[tags].tag == 'TLINK':
+                  if myroot[tags].attrib['relType']==temporalElement:
+                      print(myroot[tags].attrib)
+                      dictforTlink[myroot[tags].attrib['eventInstanceID'] if 'eventInstanceID' in myroot[tags].attrib.keys() else myroot[tags].attrib['timeID']] = myroot[tags].attrib['relatedToTime'] if 'relatedToTime' in myroot[tags].attrib.keys() else myroot[tags].attrib['relatedToEventInstance']
+          dictforTlink
+          dictformakeinstance = {}
+          for tags in range(len(myroot)):
+              if myroot[tags].tag == 'MAKEINSTANCE':
+                  dictformakeinstance[myroot[tags].attrib['eiid']] = myroot[tags].attrib['eventID']
+          dictformakeinstance
+          dictresolved = {}
+          for x in dictforTlink.keys():
+              value = dictforTlink[x]
+              dictresolved[x if 't' in x else dictformakeinstance[x]] = value if 't' in value else dictformakeinstance[value]
+            
+          dictresolved
+          f.write("\n")
+          f.write("\n")
+          f.write(filename)
+          f.write("\n")
+          f.write(temporalElement)
+          f.write("\n")
+          followed = 0
+          notfollowed = 0
+          for events in dictresolved.keys():
+              value = dictresolved[events]
+              if tokens.index(events) > tokens.index(value):
+                  print("Iconicity followed for ",events," and ",value)
+                  if("t" not in events and "t" not in value):
+                     f.write("Iconicity followed")
+                     followed = followed+1
+                     f.write("\n")
+                
+                 #print(events," has position",tokens.index(events)," and ",value," has position ",tokens.index(value))
+              else:
+                   print("Iconicity not followed for ",events," and ",value)
+                   #print(events," has position",tokens.index(events)," and ",value," has position ",tokens.index(value))
+                   if("t" not in events and "t" not in value):
+                      f.write("Iconicity not followed")
+                      notfollowed = notfollowed+1
+                      f.write("\n")
+                 
+          f.write("Followed\n")
+          f.write(str(followed/(followed+notfollowed)))
+          f.write("\n")
+          f.write("Not Followed\n")
+          f.write(str(notfollowed/(followed+notfollowed)))
+          f.close();
+          print("checkIconicityAfter finished")
+    def checkIconicityIsIncludedCheckForAfter(self,filename,temporalElement):
+          print("Hello checkIconicityIsIncludedCheckForAfter ",filename)
+          f = open("count.txt", "a")
+        
+          with open (filename) as fin:
+            tokens = word_tokenize(fin.read())
+            #print(tokens)
+            print("---------AFTER tag-----------")
+            print(tokens.count("AFTER"))
+            print("---------BEFORE tag-----------")
+            print(tokens.count("BEFORE"))
+          mytree = ET.parse(filename)
+          myroot = mytree.getroot()
+          dictforTlink = {}
+          for tags in range(len(myroot)):
+              if myroot[tags].tag == 'TLINK':
+                  if myroot[tags].attrib['relType']==temporalElement:
+                      print(myroot[tags].attrib)
+                      dictforTlink[myroot[tags].attrib['eventInstanceID'] if 'eventInstanceID' in myroot[tags].attrib.keys() else myroot[tags].attrib['timeID']] = myroot[tags].attrib['relatedToTime'] if 'relatedToTime' in myroot[tags].attrib.keys() else myroot[tags].attrib['relatedToEventInstance']
+          dictforTlink
+          dictformakeinstance = {}
+          for tags in range(len(myroot)):
+              if myroot[tags].tag == 'MAKEINSTANCE':
+                  dictformakeinstance[myroot[tags].attrib['eiid']] = myroot[tags].attrib['eventID']
+          dictformakeinstance
+          dictresolved = {}
+          for x in dictforTlink.keys():
+              value = dictforTlink[x]
+              dictresolved[x if 't' in x else dictformakeinstance[x]] = value if 't' in value else dictformakeinstance[value]
+            
+          dictresolved
+          f.write("\n")
+          f.write("\n")
+          f.write(filename)
+          f.write("\n")
+          f.write(temporalElement)
+          f.write("\n")
+          f.write("AFTER")
+          f.write("\n")
+          followed = 0
+          notfollowed = 0
+          for events in dictresolved.keys():
+              value = dictresolved[events]
+              if tokens.index(events) > tokens.index(value):
+                  print("Iconicity followed for ",events," and ",value)
+                  if("t" not in events and "t" not in value):
+                     f.write("Iconicity followed")
+                     followed = followed+1
+                     f.write("\n")
+                
+                 #print(events," has position",tokens.index(events)," and ",value," has position ",tokens.index(value))
+              else:
+                   print("Iconicity not followed for ",events," and ",value)
+                   #print(events," has position",tokens.index(events)," and ",value," has position ",tokens.index(value))
+                   if("t" not in events and "t" not in value):
+                      f.write("Iconicity not followed")
+                      notfollowed = notfollowed+1
+                      f.write("\n")
+                 
+          f.write("Followed\n")
+          f.write(str(followed/(followed+notfollowed)))
+          f.write("\n")
+          f.write("Not Followed\n")
+          f.write(str(notfollowed/(followed+notfollowed)))
+          f.close();
+          print("checkIconicityIsIncludedCheckForAfter finished")
+    def checkIconicityIsIncludedCheckForBefore(self,filename,temporalElement):
+          print("Hello checkIconicityIsIncludedCheckForBefore ",filename)
+          f = open("count.txt", "a")
+        
+          with open (filename) as fin:
+            tokens = word_tokenize(fin.read())
+            #print(tokens)
+            print("---------AFTER tag-----------")
+            print(tokens.count("AFTER"))
+            print("---------BEFORE tag-----------")
+            print(tokens.count("BEFORE"))
+          mytree = ET.parse(filename)
+          myroot = mytree.getroot()
+          dictforTlink = {}
+          for tags in range(len(myroot)):
+              if myroot[tags].tag == 'TLINK':
+                  if myroot[tags].attrib['relType']==temporalElement:
+                      print(myroot[tags].attrib)
+                      dictforTlink[myroot[tags].attrib['eventInstanceID'] if 'eventInstanceID' in myroot[tags].attrib.keys() else myroot[tags].attrib['timeID']] = myroot[tags].attrib['relatedToTime'] if 'relatedToTime' in myroot[tags].attrib.keys() else myroot[tags].attrib['relatedToEventInstance']
+          dictforTlink
+          dictformakeinstance = {}
+          for tags in range(len(myroot)):
+              if myroot[tags].tag == 'MAKEINSTANCE':
+                  dictformakeinstance[myroot[tags].attrib['eiid']] = myroot[tags].attrib['eventID']
+          dictformakeinstance
+          dictresolved = {}
+          for x in dictforTlink.keys():
+              value = dictforTlink[x]
+              dictresolved[x if 't' in x else dictformakeinstance[x]] = value if 't' in value else dictformakeinstance[value]
+            
+          dictresolved
+          f.write("\n")
+          f.write("\n")
+          f.write(filename)
+          f.write("\n")
+          f.write(temporalElement)
+          f.write("\n")
+          f.write("BEFORE")
+          f.write("\n")
+          followed = 0
+          notfollowed = 0
+          for events in dictresolved.keys():
+              value = dictresolved[events]
+              if tokens.index(events) < tokens.index(value):
+                  print("Iconicity followed for ",events," and ",value)
+                  if("t" not in events and "t" not in value):
+                     f.write("Iconicity followed")
+                     followed = followed+1
+                     f.write("\n")
+                
+                 #print(events," has position",tokens.index(events)," and ",value," has position ",tokens.index(value))
+              else:
+                   print("Iconicity not followed for ",events," and ",value)
+                   #print(events," has position",tokens.index(events)," and ",value," has position ",tokens.index(value))
+                   if("t" not in events and "t" not in value):
+                      f.write("Iconicity not followed")
+                      notfollowed = notfollowed+1
+                      f.write("\n")
+                 
+          f.write("Followed\n")
+          f.write(str(followed/(followed+notfollowed)))
+          f.write("\n")
+          f.write("Not Followed\n")
+          f.write(str(notfollowed/(followed+notfollowed)))
+          f.close();
+          print("checkIconicityIsIncludedCheckForBefore finished")
+            
+    def sentimentAnalysis(self,text):
+        return TextBlob(text).sentiment
+            
+    def main():
+      i = Iconicity()
+      print("Hello main")
+      i.checkIconicity("ABC.tml","BEFORE")
+      i.checkIconicityAfter("ABC.tml","AFTER")
+      #i.checkIconicityIsIncludedCheckForAfter("ABC.tml","IS_INCLUDED") Only t elements
+      #i.checkIconicityIsIncludedCheckForBefore("ABC.tml","IS_INCLUDED")
+      i.checkIconicity("ABC1.tml","BEFORE")
+      i.checkIconicityAfter("ABC1.tml","AFTER")
+      i.checkIconicityIsIncludedCheckForAfter("ABC1.tml","IS_INCLUDED")
+      i.checkIconicityIsIncludedCheckForBefore("ABC1.tml","IS_INCLUDED")
+      i.checkIconicity("ABC2.tml","BEFORE")
+      i.checkIconicityAfter("ABC2.tml","AFTER")
+      i.checkIconicityIsIncludedCheckForAfter("ABC2.tml","IS_INCLUDED")
+      i.checkIconicityIsIncludedCheckForBefore("ABC2.tml","IS_INCLUDED")
+      i.checkIconicity("ABC3.tml","BEFORE")
+      i.checkIconicityAfter("ABC3.tml","AFTER")
+      #i.checkIconicityIsIncludedCheckForAfter("ABC3.tml","IS_INCLUDED")
+      #i.checkIconicityIsIncludedCheckForBefore("ABC3.tml","IS_INCLUDED")
+      i.checkIconicity("AP.tml","BEFORE")
+      i.checkIconicityAfter("AP.tml","AFTER")
+      i.checkIconicityIsIncludedCheckForAfter("AP.tml","IS_INCLUDED")
+      i.checkIconicityIsIncludedCheckForBefore("AP.tml","IS_INCLUDED")
+      i.checkIconicity("AP1.tml","BEFORE")
+      i.checkIconicityAfter("AP1.tml","AFTER")
+      i.checkIconicityIsIncludedCheckForAfter("AP1.tml","IS_INCLUDED")
+      i.checkIconicityIsIncludedCheckForBefore("AP1.tml","IS_INCLUDED")
+      i.checkIconicity("APW.tml","BEFORE")
+      i.checkIconicityAfter("APW.tml","AFTER")
+      i.checkIconicityIsIncludedCheckForAfter("APW.tml","IS_INCLUDED")
+      i.checkIconicityIsIncludedCheckForBefore("APW.tml","IS_INCLUDED")
+      #i.checkIconicity("APW1.tml","BEFORE") # Only time comparison is here
+      i.checkIconicityAfter("APW1.tml","AFTER")
+      i.checkIconicityIsIncludedCheckForAfter("APW1.tml","IS_INCLUDED")
+      i.checkIconicityIsIncludedCheckForBefore("APW1.tml","IS_INCLUDED")
+      i.checkIconicity("APW2.tml","BEFORE")
+      i.checkIconicityAfter("APW2.tml","AFTER")
+      i.checkIconicityIsIncludedCheckForAfter("APW2.tml","IS_INCLUDED")
+      i.checkIconicityIsIncludedCheckForBefore("APW2.tml","IS_INCLUDED")
+      i.checkIconicity("APW3.tml","BEFORE")
+      i.checkIconicityAfter("APW3.tml","AFTER")
+      i.checkIconicityIsIncludedCheckForAfter("APW3.tml","IS_INCLUDED")
+      i.checkIconicityIsIncludedCheckForBefore("APW3.tml","IS_INCLUDED")
+      i.checkIconicity("NYT.tml","BEFORE")
+      i.checkIconicityAfter("NYT.tml","AFTER")
+      i.checkIconicityIsIncludedCheckForAfter("NYT.tml","IS_INCLUDED")
+      i.checkIconicityIsIncludedCheckForBefore("NYT.tml","IS_INCLUDED")
+      i.checkIconicity("wsj.tml","BEFORE")
+      i.checkIconicityAfter("wsj.tml","AFTER")
+      i.checkIconicityIsIncludedCheckForAfter("wsj.tml","IS_INCLUDED")
+      i.checkIconicityIsIncludedCheckForBefore("wsj.tml","IS_INCLUDED")
+      i.checkIconicity("wsj1.tml","BEFORE")
+      i.checkIconicityAfter("wsj1.tml","AFTER")
+      #i.checkIconicityIsIncludedCheckForAfter("wsj1.tml","IS_INCLUDED")
+      #i.checkIconicityIsIncludedCheckForBefore("wsj1.tml","IS_INCLUDED")
+      i.checkIconicity("APW4.tml","BEFORE")
+      i.checkIconicityAfter("APW4.tml","AFTER")
+      i.checkIconicityIsIncludedCheckForAfter("APW4.tml","IS_INCLUDED")
+      i.checkIconicityIsIncludedCheckForBefore("APW4.tml","IS_INCLUDED")
+      blob = i.sentimentAnalysis("Both US and British officials filed objections to the court's jurisdiction in 1995 claiming Security Council resolutions imposed on Lybia to force the suspects' extradition overruled a Convention which gives Libya the right to try the men")
+      print(blob)
+      #i.checkIconicity("ABC.tml","AFTER")
+    if __name__ == "__main__":
+      main() 
